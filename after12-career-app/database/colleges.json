@@ -1,0 +1,242 @@
+[
+  {
+    "id": "col_rvce",
+    "name": "RV College of Engineering (RVCE)",
+    "hub": "Bengaluru, Karnataka",
+    "region": "All-India / South",
+    "type": "Private Autonomous (VTU Affiliated)",
+    "nirf_rank": "Top 100 Engineering (India)",
+    "naac_grade": "A+",
+    "popular_courses": ["B.Tech Computer Science", "B.Tech AI & Data Science", "B.Tech ECE"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "25% Institutional Management Seats",
+      "how_to_apply": "Direct application through RSST Trust Office, Bengaluru. Grade eligibility: 65%+ in 10th & 12th PCM. No COMEDK/KCET cutoff mandatory for management seats.",
+      "mgmt_fee_per_year": "₹10,00,000 - ₹15,00,000 / Year (One-time donation/development fee varies by branch)",
+      "merit_fee_per_year": "₹1,10,000 (KCET) / ₹2,60,000 (COMEDK)"
+    },
+    "placement_stats": {
+      "placement_percentage": "98%",
+      "highest_package": "₹62 LPA",
+      "average_package": "₹15.4 LPA",
+      "top_recruiters": ["Google", "Amazon", "Apple", "Cisco", "Goldman Sachs", "Atlassian"]
+    },
+    "grade_eligibility": "Minimum 65% aggregate in 12th PCM"
+  },
+  {
+    "id": "col_manipal",
+    "name": "Manipal Academy of Higher Education (MAHE)",
+    "hub": "Manipal & Mangalore, Karnataka",
+    "region": "All-India",
+    "type": "Institution of Eminence / Deemed University",
+    "nirf_rank": "NIRF Rank #6 University in India",
+    "naac_grade": "A++",
+    "popular_courses": ["MBBS (KMC)", "B.Tech CSE (MIT Manipal)", "B.Sc Nursing", "Allied Health Sciences"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "General Category Slabs & 15% NRI/Management Seats",
+      "how_to_apply": "MET (Manipal Entrance Test) score or direct NRI/Foreign sponsorship application. For MBBS, qualifying NEET score + MCC Deemed University Counselling.",
+      "mgmt_fee_per_year": "₹4,85,000 / Year (B.Tech MIT) | MBBS: ₹17.8 Lakhs / Year",
+      "merit_fee_per_year": "Scholarship available for top 100 MET rank holders"
+    },
+    "placement_stats": {
+      "placement_percentage": "96%",
+      "highest_package": "₹54.75 LPA",
+      "average_package": "₹12.5 LPA (MIT) / 100% Medical Internship",
+      "top_recruiters": ["Microsoft", "Oracle", "Philips Healthcare", "Boston Scientific", "Deloitte"]
+    },
+    "grade_eligibility": "50% - 60% in 12th (Physics, Chem, Maths/Bio)"
+  },
+  {
+    "id": "col_vit",
+    "name": "Vellore Institute of Technology (VIT)",
+    "hub": "Vellore & Chennai, Tamil Nadu",
+    "region": "All-India",
+    "type": "Institution of Eminence / Deemed University",
+    "nirf_rank": "NIRF Rank #11 Engineering in India",
+    "naac_grade": "A++",
+    "popular_courses": ["B.Tech CSE (Core)", "B.Tech AI & Robotics", "Integrated M.Tech Software"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "Category 1 to Category 5 Fee Slabs (Institutional)",
+      "how_to_apply": "VITEEE Entrance Exam. If rank is lower, candidates can opt for Category 2, 3, 4, or 5 fees. Direct NRI seats available without VITEEE rank.",
+      "mgmt_fee_per_year": "Category 1: ₹1.98 Lakhs | Category 3: ₹4.05 Lakhs | Category 5: ₹4.95 Lakhs / Year",
+      "merit_fee_per_year": "Category 1: ₹1,98,000 / Year"
+    },
+    "placement_stats": {
+      "placement_percentage": "95%",
+      "highest_package": "₹1.02 Crore (International) / ₹59 LPA (Domestic)",
+      "average_package": "₹9.23 LPA",
+      "top_recruiters": ["Microsoft", "Intel", "Qualcomm", "Amazon", "Wipro", "TCS Digital"]
+    },
+    "grade_eligibility": "60% aggregate in 12th PCM/PCB (50% for SC/ST/North East/J&K)"
+  },
+  {
+    "id": "col_symbiosis",
+    "name": "Symbiosis International (Deemed University)",
+    "hub": "Pune, Maharashtra",
+    "region": "All-India / West",
+    "type": "Deemed University (Multi-Disciplinary)",
+    "nirf_rank": "Top 25 University in India",
+    "naac_grade": "A++",
+    "popular_courses": ["BBA (SCMS Pune)", "BA / BBA LLB (SLS Law)", "B.Tech CS (SIT)", "B.Des"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "15% Institutional / Discretionary & 15% NRI Quota",
+      "how_to_apply": "SET (Symbiosis Entrance Test) or SLAT for Law. Direct application for institutional/management category seats via Symbiosis Central Admission cell.",
+      "mgmt_fee_per_year": "₹3,80,000 - ₹5,20,000 / Year (BBA / Law)",
+      "merit_fee_per_year": "₹3,40,000 / Year (SET Merit)"
+    },
+    "placement_stats": {
+      "placement_percentage": "94%",
+      "highest_package": "₹21.5 LPA (BBA) / ₹18 LPA (Law)",
+      "average_package": "₹7.8 LPA",
+      "top_recruiters": ["KPMG", "EY", "Morgan Stanley", "Shardul Amarchand Mangaldas", "Barclays"]
+    },
+    "grade_eligibility": "Minimum 50% in 12th Board (Any stream for BBA/Law)"
+  },
+  {
+    "id": "col_christ",
+    "name": "Christ (Deemed to be University)",
+    "hub": "Bengaluru, Karnataka (Central, Bannerghatta & Yeshwanthpur Campuses)",
+    "region": "All-India / South",
+    "type": "Deemed-to-be University",
+    "nirf_rank": "Top 60 Multi-Disciplinary (India)",
+    "naac_grade": "A+",
+    "popular_courses": ["BBA (Finance / International Business)", "B.Com (Hons / ACCA)", "B.Sc Psychology", "BA LLB"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "Management / Institutional Discretionary Seats Available",
+      "how_to_apply": "Christ University Entrance Test (CUET) + Micro Presentation & Personal Interview (MP_PI). Direct management quota inquiries handled through administration office.",
+      "mgmt_fee_per_year": "₹2,20,000 - ₹3,50,000 / Year (Karnataka: Lower / Non-Karnataka: Standard)",
+      "merit_fee_per_year": "₹1,80,000 - ₹2,50,000 / Year"
+    },
+    "placement_stats": {
+      "placement_percentage": "92%",
+      "highest_package": "₹24 LPA",
+      "average_package": "₹7.2 LPA",
+      "top_recruiters": ["Goldman Sachs", "DE Shaw", "Deloitte", "Target", "Amazon", "EY"]
+    },
+    "grade_eligibility": "60%+ in 12th Board Examination"
+  },
+  {
+    "id": "col_msrit",
+    "name": "Ramaiah Institute of Technology (MSRIT)",
+    "hub": "Bengaluru, Karnataka",
+    "region": "All-India / South",
+    "type": "Private Autonomous Engineering College",
+    "nirf_rank": "Top 70 Engineering in India",
+    "naac_grade": "A+",
+    "popular_courses": ["B.Tech Computer Science", "B.Tech Information Science", "B.Tech AI & ML"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "25% Management Quota Seats",
+      "how_to_apply": "Direct seat booking through Gokula Education Foundation (GEF). Eligibility: 60%+ in 12th Maths & Physics. Instant allotment letter provided on seat booking.",
+      "mgmt_fee_per_year": "₹6,50,000 - ₹10,00,000 / Year depending on branch",
+      "merit_fee_per_year": "₹1,10,000 (KCET) / ₹2,60,000 (COMEDK)"
+    },
+    "placement_stats": {
+      "placement_percentage": "96%",
+      "highest_package": "₹50 LPA",
+      "average_package": "₹9.8 LPA",
+      "top_recruiters": ["Adobe", "CISCO", "Schneider Electric", "Infosys", "Capgemini"]
+    },
+    "grade_eligibility": "Minimum 60% in 12th (PCM)"
+  },
+  {
+    "id": "col_nmims",
+    "name": "NMIMS (Narsee Monjee Institute of Management Studies)",
+    "hub": "Mumbai & Bengaluru",
+    "region": "All-India / West",
+    "type": "Deemed-to-be University",
+    "nirf_rank": "Top 20 Management & Multi-Disciplinary",
+    "naac_grade": "A+",
+    "popular_courses": ["BBA (Anil Surendra Modi School)", "B.Com (Hons)", "B.Tech Data Science (MPSTME)"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "Vacant / Institutional Seats & NRI Quota",
+      "how_to_apply": "NPAT Entrance Exam score. NRI and vacant seat rounds opened post first-round counselling.",
+      "mgmt_fee_per_year": "₹3,50,000 - ₹4,50,000 / Year",
+      "merit_fee_per_year": "₹3,25,000 / Year"
+    },
+    "placement_stats": {
+      "placement_percentage": "95%",
+      "highest_package": "₹22 LPA",
+      "average_package": "₹8.5 LPA",
+      "top_recruiters": ["JPMorgan Chase", "Nomura", "Bain & Company", "Zomato", "ITC"]
+    },
+    "grade_eligibility": "60% aggregate in 12th with Mathematics/Statistics compulsory for BBA"
+  },
+  {
+    "id": "col_srm",
+    "name": "SRM Institute of Science and Technology",
+    "hub": "Kattankulathur (Chennai) & Delhi NCR",
+    "region": "All-India",
+    "type": "Deemed University",
+    "nirf_rank": "NIRF Rank #18 University in India",
+    "naac_grade": "A++",
+    "popular_courses": ["B.Tech CSE with Cloud Computing", "B.Tech AI & ML", "B.Sc Medical Lab Tech"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "Direct Admission & Management Seats Available",
+      "how_to_apply": "SRMJEEE online exam or direct institutional quota application for students scoring 60%+ in 12th PCM/PCB.",
+      "mgmt_fee_per_year": "₹3,50,000 - ₹4,75,000 / Year",
+      "merit_fee_per_year": "₹2,50,000 - ₹3,00,000 / Year"
+    },
+    "placement_stats": {
+      "placement_percentage": "94%",
+      "highest_package": "₹57 LPA",
+      "average_package": "₹7.9 LPA",
+      "top_recruiters": ["Amazon", "TCS Ninja & Digital", "Cognizant", "Wipro", "Honda"]
+    },
+    "grade_eligibility": "60% aggregate in 12th (PCM/PCB)"
+  },
+  {
+    "id": "col_amrita",
+    "name": "Amrita Vishwa Vidyapeetham",
+    "hub": "Coimbatore, Bengaluru & Kollam (Kerala)",
+    "region": "All-India / South",
+    "type": "Institution of Eminence / Deemed University",
+    "nirf_rank": "NIRF Rank #7 University in India",
+    "naac_grade": "A++",
+    "popular_courses": ["B.Tech CSE & AI", "MBBS (Amrita Kochi/Faridabad)", "B.Sc Nursing"],
+    "management_quota_info": {
+      "has_management_quota": true,
+      "quota_percentage": "Institutional / Slab-based Seats & NRI Category",
+      "how_to_apply": "AEEE or JEE Main percentile. Direct management & NRI quota applications processed at campus level.",
+      "mgmt_fee_per_year": "₹3,50,000 - ₹4,50,000 / Year (Slab 3/4) | MBBS: ₹19 Lakhs / Year",
+      "merit_fee_per_year": "₹1,50,000 - ₹2,50,000 / Year (Slab 1/2)"
+    },
+    "placement_stats": {
+      "placement_percentage": "95%",
+      "highest_package": "₹56 LPA",
+      "average_package": "₹9.1 LPA",
+      "top_recruiters": ["Microsoft", "Cisco", "Bosch", "Amazon", "Infosys"]
+    },
+    "grade_eligibility": "Minimum 60% in PCM with at least 55% in each subject"
+  },
+  {
+    "id": "col_cet",
+    "name": "College of Engineering Trivandrum (CET)",
+    "hub": "Thiruvananthapuram, Kerala",
+    "region": "Kerala",
+    "type": "Premier Government Autonomous",
+    "nirf_rank": "Top Tier Govt Engineering",
+    "naac_grade": "A+",
+    "popular_courses": ["B.Tech AI & Data Science", "B.Tech CSE", "B.Tech ECE"],
+    "management_quota_info": {
+      "has_management_quota": false,
+      "quota_percentage": "100% Merit Based",
+      "how_to_apply": "KEAM Entrance rank and Centralized Allotment Process (CAP) only.",
+      "mgmt_fee_per_year": "No Management Quota",
+      "merit_fee_per_year": "₹8,500 - ₹12,000 / Year"
+    },
+    "placement_stats": {
+      "placement_percentage": "94%",
+      "highest_package": "₹33 LPA",
+      "average_package": "₹7.5 LPA",
+      "top_recruiters": ["Texas Instruments", "Bosch", "Amazon", "TCS Digital", "L&T"]
+    },
+    "grade_eligibility": "Minimum 45% in 12th PCM + KEAM Entrance Rank"
+  }
+]

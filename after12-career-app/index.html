@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="indigo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json">
+  <title>NextStep India - 24/7 Always Available Career Portal</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.3);
+      border-radius: 9999px;
+    }
+
+    /* Dynamic Theme Color Variables */
+    :root[data-theme="indigo"] {
+      --brand-primary: #4f46e5;
+      --brand-primary-hover: #4338ca;
+      --brand-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      --brand-light: rgba(79, 70, 229, 0.1);
+      --brand-border: rgba(79, 70, 229, 0.25);
+      --brand-text: #4f46e5;
+    }
+
+    :root[data-theme="emerald"] {
+      --brand-primary: #059669;
+      --brand-primary-hover: #047857;
+      --brand-gradient: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+      --brand-light: rgba(5, 150, 105, 0.1);
+      --brand-border: rgba(5, 150, 105, 0.25);
+      --brand-text: #059669;
+    }
+
+    :root[data-theme="sunset"] {
+      --brand-primary: #ea580c;
+      --brand-primary-hover: #c2410c;
+      --brand-gradient: linear-gradient(135deg, #ea580c 0%, #e11d48 100%);
+      --brand-light: rgba(234, 88, 12, 0.1);
+      --brand-border: rgba(234, 88, 12, 0.25);
+      --brand-text: #ea580c;
+    }
+
+    :root[data-theme="cyber"] {
+      --brand-primary: #0284c7;
+      --brand-primary-hover: #0369a1;
+      --brand-gradient: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+      --brand-light: rgba(2, 132, 199, 0.1);
+      --brand-border: rgba(2, 132, 199, 0.25);
+      --brand-text: #0284c7;
+    }
+
+    .brand-btn {
+      background: var(--brand-gradient);
+    }
+    .brand-btn:hover {
+      filter: brightness(1.08);
+    }
+    .brand-text {
+      color: var(--brand-primary);
+    }
+    .brand-bg-light {
+      background-color: var(--brand-light);
+    }
+    .brand-border {
+      border-color: var(--brand-border);
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen p-3 md:p-6 selection:bg-indigo-600 selection:text-white">
+
+  <!-- Top Action Toolbar -->
+  <header class="max-w-6xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-4 bg-[var(--card)] p-4 rounded-2xl border border-[var(--border)] shadow-sm">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl brand-btn flex items-center justify-center text-white font-black text-xl shadow-lg ring-2 ring-white/20">
+        12+
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-extrabold text-lg md:text-xl text-[var(--foreground)] tracking-tight">
+            NextStep India
+          </h1>
+          <!-- 24/7 Zero Busy Server Pill -->
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            24/7 Always Active (No Busy Server)
+          </span>
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)]">
+          Zero-Downtime Architecture • Offline-Ready PWA • 1-Tap Mobile Install
+        </p>
+      </div>
+    </div>
+
+    <!-- Theme Color Picker & View Switchers -->
+    <div class="flex items-center gap-3 flex-wrap">
+      
+      <!-- Palette Switcher -->
+      <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--content)] border border-[var(--border)] shadow-inner">
+        <span class="text-[11px] font-semibold px-1.5 text-[var(--muted-foreground)]">Theme:</span>
+        <button onclick="setAppTheme('indigo')" title="Royal Indigo" class="w-6 h-6 rounded-lg bg-indigo-600 border-2 border-white/60 shadow hover:scale-110 transition-transform active:scale-95"></button>
+        <button onclick="setAppTheme('emerald')" title="Fresh Emerald" class="w-6 h-6 rounded-lg bg-emerald-600 border-2 border-white/60 shadow hover:scale-110 transition-transform active:scale-95"></button>
+        <button onclick="setAppTheme('sunset')" title="Sunset Orange" class="w-6 h-6 rounded-lg bg-orange-600 border-2 border-white/60 shadow hover:scale-110 transition-transform active:scale-95"></button>
+        <button onclick="setAppTheme('cyber')" title="Cyber Ocean" class="w-6 h-6 rounded-lg bg-sky-600 border-2 border-white/60 shadow hover:scale-110 transition-transform active:scale-95"></button>
+      </div>
+
+      <!-- Install App Button (PWA) -->
+      <button id="pwaInstallBtn" onclick="triggerPwaInstall()" class="px-3 py-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold hover:bg-emerald-500/20 transition-all shadow-sm flex items-center gap-1.5">
+        <span>📲</span>
+        <span>Install App</span>
+      </button>
+
+      <!-- Language Toggle -->
+      <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-xl border border-[var(--border)] bg-[var(--content)] text-xs font-semibold hover:border-indigo-500 transition-colors flex items-center gap-1.5 shadow-sm">
+        <span>🌐</span>
+        <span id="currentLangLabel">English</span>
+      </button>
+
+      <!-- Mobile/Desktop Frame Toggle -->
+      <button id="deviceToggleBtn" onclick="toggleDeviceView()" class="px-3 py-1.5 rounded-xl brand-btn text-white text-xs font-medium transition-all shadow flex items-center gap-1.5">
+        <span id="deviceIcon">📱</span>
+        <span id="deviceLabel">Mobile Mockup View</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto flex justify-center items-start">
+    
+    <!-- Phone Mockup / Responsive Wrapper -->
+    <div id="appContainer" class="w-full max-w-md bg-[var(--card)] border border-[var(--border)] rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 relative min-h-[790px] flex flex-col">
+      
+      <!-- High Availability Status Bar -->
+      <div id="statusBar" class="px-5 py-2 bg-[var(--card)] border-b border-[var(--border)] flex justify-between items-center text-xs text-[var(--muted-foreground)] select-none">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span class="font-bold text-[10px] text-emerald-600 dark:text-emerald-400">EDGE CDN ACTIVE (0s LATENCY)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-[var(--foreground)]">9:41 AM</span>
+          <span>⚡ Offline-Ready</span>
+          <span>🔋 100%</span>
+        </div>
+      </div>
+
+      <!-- In-App Header & Search -->
+      <div class="p-4 bg-gradient-to-b from-indigo-500/10 via-purple-500/5 to-transparent border-b border-[var(--border)]">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider brand-text" id="headerTagline">
+              Post 12th Career Portal
+            </span>
+            <h2 class="text-lg font-extrabold text-[var(--foreground)] mt-0.5" id="headerGreeting">
+              Find Your Dream Path 🚀
+            </h2>
+          </div>
+          <!-- 24/7 Live Queue Button -->
+          <button onclick="switchTab('counselors')" class="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center gap-1.5 hover:bg-emerald-500/25 transition-all shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Instant Queue</span>
+          </button>
+        </div>
+
+        <!-- Universal Search Input -->
+        <div class="relative">
+          <input 
+            type="text" 
+            id="searchInput"
+            oninput="handleSearch(this.value)"
+            placeholder="Search AI, RVCE, Pilot, VIT, ACCA, Manipal..." 
+            class="w-full px-4 py-2.5 pl-10 rounded-2xl bg-[var(--background)] border border-[var(--border)] text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-[var(--foreground)] placeholder-[var(--muted-foreground)] transition-all shadow-sm"
+          />
+          <div class="absolute left-3.5 top-3 text-[var(--muted-foreground)] text-xs">🔍</div>
+        </div>
+      </div>
+
+      <!-- Scrollable Tab Content Container -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4" id="mainTabContent">
+        
+        <!-- ================= TAB 1: COURSES ================= -->
+        <section id="tab-courses" class="space-y-4">
+          <!-- Stream Filter Pills -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+            <button onclick="filterCourses('all')" class="stream-pill active px-3.5 py-1.5 rounded-xl font-bold transition-all brand-btn text-white shadow-sm whitespace-nowrap" data-stream="all">
+              ⚡ All Fields
+            </button>
+            <button onclick="filterCourses('PCM')" class="stream-pill px-3 py-1.5 rounded-xl font-semibold transition-all bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-stream="PCM">
+              💻 Tech & AI (PCM)
+            </button>
+            <button onclick="filterCourses('PCB')" class="stream-pill px-3 py-1.5 rounded-xl font-semibold transition-all bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-emerald-500 whitespace-nowrap" data-stream="PCB">
+              🩺 Medical & Bio (PCB)
+            </button>
+            <button onclick="filterCourses('Commerce')" class="stream-pill px-3 py-1.5 rounded-xl font-semibold transition-all bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-amber-500 whitespace-nowrap" data-stream="Commerce">
+              📊 Commerce & ACCA
+            </button>
+            <button onclick="filterCourses('Any')" class="stream-pill px-3 py-1.5 rounded-xl font-semibold transition-all bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-purple-500 whitespace-nowrap" data-stream="Any">
+              ⚖️ Law & UI/UX Design
+            </button>
+          </div>
+
+          <!-- High-Capacity Notice -->
+          <div class="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-between text-xs">
+            <span class="text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1.5">
+              <span>🚀</span> <b>Server Status:</b> Optimal (Zero Lag / 100,000+ Students Capacity)
+            </span>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Local Cache Active</span>
+          </div>
+
+          <!-- Grade Matcher Quick Action Card -->
+          <div onclick="switchTab('matcher')" class="p-4 rounded-2xl brand-btn text-white shadow-lg relative overflow-hidden cursor-pointer hover:shadow-xl transition-all group">
+            <div class="relative z-10 pr-12">
+              <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/25 px-2.5 py-0.5 rounded-md backdrop-blur-sm">Grade Matcher Tool</span>
+              <h3 class="font-extrabold text-sm mt-1.5 flex items-center gap-1.5">
+                Check What Your 12th Marks Qualify For 🎯
+              </h3>
+              <p class="text-xs text-white/90 mt-1 leading-snug">
+                Instant calculations with zero wait time. See colleges, scholarships, and direct management quota seats.
+              </p>
+            </div>
+            <div class="absolute -right-2 -bottom-3 text-6xl opacity-25 group-hover:scale-110 transition-transform">✨</div>
+          </div>
+
+          <!-- Course Cards Feed -->
+          <div id="courseCardsList" class="space-y-3">
+            <!-- Dynamic Injection -->
+          </div>
+        </section>
+
+        <!-- ================= TAB 2: GRADE MATCHER ================= -->
+        <section id="tab-matcher" class="space-y-4 hidden">
+          <div class="p-4 rounded-2xl bg-[var(--content)] border border-[var(--border)] space-y-3 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🎯</span>
+              <div>
+                <h3 class="font-extrabold text-sm text-[var(--foreground)]">Post 12th Grade & Marks Matcher</h3>
+                <p class="text-xs text-[var(--muted-foreground)]">Match your board percentage with top colleges and quota seats</p>
+              </div>
+            </div>
+
+            <!-- Grade Selectors with Color Tiers -->
+            <div class="space-y-3 pt-2">
+              <div>
+                <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1.5">Select 12th Board Percentage Bracket:</label>
+                <div class="grid grid-cols-4 gap-1.5 text-xs">
+                  <button onclick="setGradeScore('90', this)" class="grade-btn py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 font-black text-emerald-700 dark:text-emerald-400 hover:border-emerald-500 transition-all">
+                    90% +<br><span class="text-[9px] font-normal">Tier 1 Merit</span>
+                  </button>
+                  <button onclick="setGradeScore('75', this)" class="grade-btn py-2.5 rounded-xl border border-indigo-500/40 brand-btn text-white font-black shadow transition-all">
+                    75% - 89%<br><span class="text-[9px] font-normal">Top Hubs</span>
+                  </button>
+                  <button onclick="setGradeScore('60', this)" class="grade-btn py-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 font-black text-amber-700 dark:text-amber-400 hover:border-amber-500 transition-all">
+                    60% - 74%<br><span class="text-[9px] font-normal">Mgmt Quota</span>
+                  </button>
+                  <button onclick="setGradeScore('50', this)" class="grade-btn py-2.5 rounded-xl border border-purple-500/30 bg-purple-500/10 font-black text-purple-700 dark:text-purple-400 hover:border-purple-500 transition-all">
+                    50% - 59%<br><span class="text-[9px] font-normal">NEET/Pass</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">Your Main Stream:</label>
+                <select id="matcherStreamSelect" onchange="runGradeMatcher()" class="w-full px-3 py-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-xs font-semibold text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                  <option value="PCM">Physics, Chemistry, Maths (Engineering / Aviation / Tech)</option>
+                  <option value="PCB">Physics, Chemistry, Biology (Medicine / Nursing / Allied Health)</option>
+                  <option value="Commerce">Commerce / Business Studies / Accounts (BBA / ACCA / Finance)</option>
+                  <option value="Humanities">Humanities / Arts / Any Stream (Law / Design / Psychology)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matcher Recommendations Output -->
+          <div id="matcherResultsContainer" class="space-y-3">
+            <!-- Dynamic Result Cards -->
+          </div>
+        </section>
+
+        <!-- ================= TAB 3: COLLEGES & HUBS ================= -->
+        <section id="tab-colleges" class="space-y-4 hidden">
+          <!-- Hub Filter Pills -->
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+            <button onclick="filterCollegesHub('all')" class="hub-pill active px-3.5 py-1.5 rounded-xl font-bold brand-btn text-white whitespace-nowrap shadow-sm" data-hub="all">All Hubs (India)</button>
+            <button onclick="filterCollegesHub('Bengaluru')" class="hub-pill px-3 py-1.5 rounded-xl font-semibold bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-hub="Bengaluru">📍 Bengaluru (RVCE / Ramaiah)</button>
+            <button onclick="filterCollegesHub('Tamil Nadu')" class="hub-pill px-3 py-1.5 rounded-xl font-semibold bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-hub="Tamil Nadu">📍 Tamil Nadu (VIT / SRM)</button>
+            <button onclick="filterCollegesHub('Pune')" class="hub-pill px-3 py-1.5 rounded-xl font-semibold bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-hub="Pune">📍 Pune / Mumbai (Symbiosis)</button>
+            <button onclick="filterCollegesHub('Manipal')" class="hub-pill px-3 py-1.5 rounded-xl font-semibold bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-hub="Manipal">📍 Manipal (MAHE / KMC)</button>
+            <button onclick="filterCollegesHub('Kerala')" class="hub-pill px-3 py-1.5 rounded-xl font-semibold bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)] hover:border-indigo-500 whitespace-nowrap" data-hub="Kerala">📍 Kerala (CET / MEC / Amrita)</button>
+          </div>
+
+          <!-- Spotlight Card -->
+          <div class="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/5 to-transparent border border-amber-500/30 flex items-start gap-3">
+            <span class="text-2xl">🏛️</span>
+            <div>
+              <h4 class="font-bold text-xs text-amber-700 dark:text-amber-400">Direct Management Quota Overview</h4>
+              <p class="text-[11px] text-[var(--muted-foreground)] mt-0.5 leading-relaxed">
+                Autonomous and deemed colleges in <b>Bengaluru</b> and <b>Tamil Nadu</b> offer institutional seats. Admission is based on qualifying 12th marks directly without entrance dependency.
+              </p>
+            </div>
+          </div>
+
+          <!-- Colleges Feed -->
+          <div id="collegeCardsList" class="space-y-3">
+            <!-- Dynamic Injection -->
+          </div>
+        </section>
+
+        <!-- ================= TAB 4: FEES & SCHOLARSHIPS ================= -->
+        <section id="tab-fees" class="space-y-4 hidden">
+          <div class="p-4 rounded-2xl bg-[var(--content)] border border-[var(--border)] space-y-3 shadow-sm">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">💳</span>
+              <h3 class="font-extrabold text-sm text-[var(--foreground)]">
+                All-India Fee Structure & Quota Comparison
+              </h3>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              Compare transparent fee structures across Government Merit, Deemed University slabs, and Direct Management Quota seats.
+            </p>
+
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3.5 rounded-xl bg-[var(--card)] border border-emerald-500/30 bg-emerald-500/5">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400 text-xs">1. Government & State Merit (KCET / KEAM / CUET)</span>
+                    <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">High entrance rank required. Subsidized tuition fee.</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-black text-xs text-emerald-700 dark:text-emerald-300">₹15,000 - 1.1 Lakhs</span>
+                    <div class="text-[10px] text-[var(--muted-foreground)]">per year</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-[var(--card)] border border-indigo-500/30 bg-indigo-500/5">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="font-bold text-indigo-600 dark:text-indigo-400 text-xs">2. Deemed Univ Slabs (VIT / SRM / Manipal)</span>
+                    <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">Category 1 (low fee) to Category 5 (higher fee for lower ranks).</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-black text-xs text-indigo-700 dark:text-indigo-300">₹2.0 - 5.0 Lakhs</span>
+                    <div class="text-[10px] text-[var(--muted-foreground)]">per year</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-[var(--card)] border border-purple-500/30 bg-purple-500/5">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="font-bold text-purple-600 dark:text-purple-400 text-xs">3. Direct Management Quota (Bengaluru / Pune)</span>
+                    <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">Institutional direct reservation. Minimum 60%+ in 12th Board.</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-black text-xs text-purple-700 dark:text-purple-300">₹6.5 - 14.0 Lakhs</span>
+                    <div class="text-[10px] text-[var(--muted-foreground)]">per year + dev fee</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vidya Lakshmi Loan Card -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white space-y-2 shadow-lg">
+            <h4 class="font-bold text-xs flex items-center gap-1.5">
+              <span>🏦</span> 100% Education Loan & PM-Vidyalaxmi Support
+            </h4>
+            <p class="text-xs text-white/90 leading-relaxed">
+              Get collateral-free bank loans up to ₹7.5 Lakhs for approved degree programs. Our customer care desk assists with bank sanction letters.
+            </p>
+            <button onclick="openCallbackModal('Education Loan & Fee Guidance')" class="w-full py-2.5 rounded-xl bg-white text-indigo-900 font-extrabold text-xs hover:bg-slate-50 transition-all shadow-md">
+              Inquire Education Loan Documentation
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= TAB 5: COUNSELORS & CRM ================= -->
+        <section id="tab-counselors" class="space-y-4 hidden">
+          <!-- Support Hero with 24/7 Queue System -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-md bg-white/20 text-[10px] font-bold uppercase tracking-wider">High-Capacity Queue System</span>
+              <span class="text-xs flex items-center gap-1 font-semibold">● 24/7 Available (No Busy Server)</span>
+            </div>
+            <h3 class="font-extrabold text-base leading-tight">Instant Lead Reservation & Direct WhatsApp</h3>
+            <p class="text-xs text-emerald-100 leading-relaxed">
+              Even during high result days when phone lines get congested, our automated queue reserves your priority spot and provides direct WhatsApp consultation.
+            </p>
+            <button onclick="openCallbackModal('Direct Immediate Callback')" class="w-full py-2.5 rounded-xl bg-white text-emerald-900 font-black text-xs hover:bg-emerald-50 transition-all shadow-md">
+              📞 Get Instant Queue Ticket & Call
+            </button>
+          </div>
+
+          <!-- Counselors List -->
+          <div class="space-y-2.5" id="counselorCardsList">
+            <!-- Dynamic Injection -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="border-t border-[var(--border)] bg-[var(--card)] px-2 py-2 grid grid-cols-5 gap-1 text-[11px] font-semibold text-center select-none shadow-lg">
+        <button onclick="switchTab('courses')" id="nav-courses" class="nav-item flex flex-col items-center justify-center py-1 rounded-xl brand-text font-black transition-all">
+          <span class="text-lg">🧭</span>
+          <span class="nav-text">Courses</span>
+        </button>
+        <button onclick="switchTab('matcher')" id="nav-matcher" class="nav-item flex flex-col items-center justify-center py-1 rounded-xl text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-all">
+          <span class="text-lg">🎯</span>
+          <span class="nav-text">Grade Match</span>
+        </button>
+        <button onclick="switchTab('colleges')" id="nav-colleges" class="nav-item flex flex-col items-center justify-center py-1 rounded-xl text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-all">
+          <span class="text-lg">🏛️</span>
+          <span class="nav-text">Colleges</span>
+        </button>
+        <button onclick="switchTab('fees')" id="nav-fees" class="nav-item flex flex-col items-center justify-center py-1 rounded-xl text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-all">
+          <span class="text-lg">💳</span>
+          <span class="nav-text">Fees & Quota</span>
+        </button>
+        <button onclick="switchTab('counselors')" id="nav-counselors" class="nav-item flex flex-col items-center justify-center py-1 rounded-xl text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-all relative">
+          <span class="text-lg">📞</span>
+          <span class="nav-text">Support</span>
+          <span class="absolute top-1 right-3 w-2 h-2 rounded-full bg-emerald-500"></span>
+        </button>
+      </nav>
+
+    </div>
+
+  </main>
+
+  <!-- ================= MODAL: COURSE DETAIL POPUP ================= -->
+  <div id="courseModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-3xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-5 shadow-2xl space-y-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <span id="modalCourseStream" class="px-2.5 py-0.5 rounded-full text-xs font-bold brand-bg-light brand-text brand-border border"></span>
+          <h3 id="modalCourseTitle" class="text-lg font-black text-[var(--foreground)] mt-2"></h3>
+        </div>
+        <button onclick="closeCourseModal()" class="w-8 h-8 rounded-full bg-[var(--content)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+
+      <p id="modalCourseDesc" class="text-xs text-[var(--muted-foreground)] leading-relaxed"></p>
+
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="p-3 rounded-xl bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-[var(--muted-foreground)]">Duration & Min 12th Marks</div>
+          <div id="modalCourseDuration" class="font-extrabold text-[var(--foreground)] mt-0.5"></div>
+        </div>
+        <div class="p-3 rounded-xl bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-[var(--muted-foreground)]">Expected Starting Package</div>
+          <div id="modalCourseSalary" class="font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5"></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-bold text-[var(--foreground)] mb-1">Top Education Hubs Across India:</h4>
+        <div id="modalCourseHubs" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-bold text-[var(--foreground)] mb-1">High-Paying Career & Job Roles:</h4>
+        <div id="modalCourseRoles" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-bold text-[var(--foreground)] mb-1">Admission Mode & Quota Routes:</h4>
+        <div id="modalCourseAdmission" class="text-xs p-2.5 rounded-xl bg-[var(--content)] text-[var(--foreground)] border border-[var(--border)]"></div>
+      </div>
+
+      <div class="pt-2 flex gap-2">
+        <button onclick="openCallbackModal('Course Admission Inquiry')" class="flex-1 py-2.5 rounded-xl brand-btn text-white font-bold text-xs transition-colors shadow-lg">
+          Inquire Admission & Management Seats 📞
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: COUNSELLOR CALLBACK REQUEST & TICKET ================= -->
+  <div id="callbackModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-3xl max-w-md w-full p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">📞</span>
+          <div>
+            <h3 class="text-base font-extrabold text-[var(--foreground)]">Free All-India Counselling</h3>
+            <span class="text-[10px] text-emerald-600 font-bold">● High Availability Queue Active</span>
+          </div>
+        </div>
+        <button onclick="closeCallbackModal()" class="w-8 h-8 rounded-full bg-[var(--content)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+
+      <!-- State 1: Lead Form -->
+      <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-3">
+        <p class="text-xs text-[var(--muted-foreground)]">
+          Submit your inquiry. An instant queue priority ticket is generated and our advisor calls you in 15 minutes.
+        </p>
+
+        <div>
+          <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">Student Full Name</label>
+          <input type="text" id="leadName" required placeholder="Enter student's name" class="w-full px-3 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">Mobile / WhatsApp Number</label>
+          <input type="tel" id="leadPhone" required placeholder="+91 98765 43210" class="w-full px-3 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">12th Marks (%)</label>
+            <input type="text" id="leadScore" required placeholder="e.g. 82%" class="w-full px-3 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">Target Hub / State</label>
+            <select id="leadHub" class="w-full px-3 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+              <option value="Bengaluru">Bengaluru (RVCE, Ramaiah, Christ)</option>
+              <option value="Tamil Nadu">Tamil Nadu (VIT, SRM)</option>
+              <option value="Manipal">Manipal / Mangalore (MAHE/KMC)</option>
+              <option value="Pune/Mumbai">Pune / Mumbai (Symbiosis, NMIMS)</option>
+              <option value="Kerala">Kerala (CET, Rajagiri, Amrita)</option>
+              <option value="Delhi NCR">Delhi NCR Hub</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[var(--muted-foreground)] mb-1">Preferred Admission Route</label>
+          <select id="leadStream" class="w-full px-3 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--foreground)] focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <option value="Direct Management Quota">Direct Management Quota (Institutional Seat)</option>
+            <option value="Merit & Entrance Guidance">Entrance Exam & Merit Guidance</option>
+            <option value="NRI / Foreign Quota">NRI Quota / Foreign Sponsorship</option>
+            <option value="Education Loan Support">Education Loan & Scholarship Support</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition-colors shadow-lg">
+          Generate Priority Queue Ticket & Book ✓
+        </button>
+      </form>
+
+      <!-- State 2: Instant Ticket & WhatsApp Bypass (Shown post-submission) -->
+      <div id="ticketSuccessCard" class="hidden space-y-3 text-center py-2">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-2xl">
+          🎟️
+        </div>
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Priority Ticket Confirmed</div>
+          <h4 id="ticketIdLabel" class="text-xl font-black text-[var(--foreground)] tracking-wide">#NS-84920</h4>
+          <p class="text-xs text-[var(--muted-foreground)] mt-1">
+            Your inquiry is registered in the queue. Estimated callback time: <b>within 10-15 mins</b>.
+          </p>
+        </div>
+
+        <!-- Direct WhatsApp Bypass (Never wait on server or phone line) -->
+        <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-2">
+          <p class="text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+            Don't want to wait for a phone call? Connect instantly on WhatsApp:
+          </p>
+          <a id="whatsappDirectLink" href="#" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all">
+            <span>💬</span> Chat Direct on WhatsApp Now
+          </a>
+        </div>
+
+        <button onclick="closeCallbackModal()" class="w-full py-2 rounded-xl bg-[var(--content)] text-[var(--muted-foreground)] text-xs font-bold hover:text-[var(--foreground)]">
+          Done
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 px-4 py-3 rounded-2xl bg-emerald-600 text-white shadow-2xl flex items-center gap-2 text-xs font-bold">
+    <span>✅</span>
+    <span id="toastMessage">Priority Ticket Generated!</span>
+  </div>
+
+  <!-- Client-side Logic & Dataset -->
+  <script>
+    const coursesData = [
+      {
+        id: "c1",
+        name: "B.Tech Computer Science & AI / ML",
+        name_ml: "ബി.ടെക് കമ്പ്യൂട്ടർ സയൻസ് & എ.ഐ",
+        stream: "PCM",
+        icon: "🤖",
+        badge_color: "border-blue-500/30 bg-blue-500/10 text-blue-600",
+        min_grade_pct: "60% in PCM (Top tiers ask 70%+)",
+        duration: "4 Years",
+        future_demand: "Very High (★★★★★)",
+        avg_salary: "₹8.5 - 28 LPA",
+        top_places: ["Bengaluru", "Hyderabad", "Pune", "Chennai", "Delhi NCR"],
+        description: "India's highest paid engineering field with strong international demand in Generative AI, cloud infrastructure, and cybersecurity.",
+        top_roles: ["AI Engineer", "MLOps Architect", "Full Stack Developer", "Data Scientist"],
+        admission_mode: "JEE / BITSAT / COMEDK / VITEEE / Direct Management Quota"
+      },
+      {
+        id: "c2",
+        name: "MBBS & Allied Health Sciences (Nursing / B.Pharm / Radiology)",
+        name_ml: "എം.ബി.ബി.എസ് & അനുബന്ധ ഹെൽത്ത് സയൻസ്",
+        stream: "PCB",
+        icon: "🩺",
+        badge_color: "border-rose-500/30 bg-rose-500/10 text-rose-600",
+        min_grade_pct: "50% in PCB + NEET Qualifying Score",
+        duration: "4.5 - 5.5 Years",
+        future_demand: "Evergreen (★★★★★)",
+        avg_salary: "₹7.0 - 22 LPA",
+        top_places: ["Manipal/Mangalore", "Bengaluru", "Vellore", "Chennai", "Delhi NCR"],
+        description: "Global healthcare demand across India, UK (NHS), Germany, and Gulf. High job security and prestige.",
+        top_roles: ["Physician / Surgeon", "Registered Nurse", "Clinical Pharmacist", "Perfusionist"],
+        admission_mode: "NEET UG / State Counselling / Deemed Univ Management Quota / NRI Quota"
+      },
+      {
+        id: "c3",
+        name: "BBA / BMS / Integrated MBA (IIM IPM 5-Year)",
+        name_ml: "ബി.ബി.എ / ഇന്റഗ്രേറ്റഡ് എം.ബി.എ (IIM IPM)",
+        stream: "Commerce",
+        icon: "📈",
+        badge_color: "border-amber-500/30 bg-amber-500/10 text-amber-600",
+        min_grade_pct: "60% in 12th Board",
+        duration: "3 - 5 Years",
+        future_demand: "Very High (★★★★★)",
+        avg_salary: "₹8.0 - 25 LPA",
+        top_places: ["Mumbai", "Bengaluru", "Delhi NCR", "Pune", "Indore"],
+        description: "Premier management fast-track directly after 12th into IIMs (Indore, Rohtak, Ranchi) or top private business schools like Christ, Symbiosis, and NMIMS.",
+        top_roles: ["Management Consultant", "Investment Banking Analyst", "Brand Manager"],
+        admission_mode: "IPMAT / NPAT / SET / CUET / Direct Institutional Seats"
+      },
+      {
+        id: "c4",
+        name: "B.Com (Hons) with ACCA / US CPA Integration",
+        name_ml: "ബി.കോം വിത്ത് ACCA / CA",
+        stream: "Commerce",
+        icon: "💼",
+        badge_color: "border-emerald-500/30 bg-emerald-500/10 text-emerald-600",
+        min_grade_pct: "55% - 70% in 12th Board",
+        duration: "3 Years",
+        future_demand: "High (★★★★☆)",
+        avg_salary: "₹6.0 - 15 LPA",
+        top_places: ["Bengaluru", "Mumbai", "Delhi NCR", "Chennai", "Kochi"],
+        description: "Get 9 paper exemptions in ACCA, qualifying graduates for global Big 4 corporate finance and auditing roles across 180+ countries.",
+        top_roles: ["Chartered Certified Accountant", "Risk Auditor", "Financial Analyst"],
+        admission_mode: "CUET / College Merit / Management Seat"
+      },
+      {
+        id: "c5",
+        name: "Integrated BA / BBA LLB (5-Year Corporate Law)",
+        name_ml: "ഇന്റഗ്രേറ്റഡ് ലോ (BA/BBA LLB)",
+        stream: "Any",
+        icon: "⚖️",
+        badge_color: "border-purple-500/30 bg-purple-500/10 text-purple-600",
+        min_grade_pct: "45% - 50% in 12th Board",
+        duration: "5 Years",
+        future_demand: "High (★★★★☆)",
+        avg_salary: "₹8.0 - 20 LPA",
+        top_places: ["Bengaluru (NLSIU/Christ)", "Delhi NCR (Jindal)", "Pune (Symbiosis)", "Hyderabad"],
+        description: "Top corporate law, arbitration, cyber law, and M&A advisory positions across elite multinational law firms and corporations.",
+        top_roles: ["Corporate Legal Counsel", "Cyber Law Advocate", "Arbitration Specialist"],
+        admission_mode: "CLAT / AILET / SLAT (Symbiosis) / Management Quota"
+      },
+      {
+        id: "c6",
+        name: "Commercial Pilot License (CPL) & Aviation Management",
+        name_ml: "ഏവിയേഷൻ & പൈലറ്റ് ട്രെയിനിംഗ് (CPL)",
+        stream: "PCM",
+        icon: "✈️",
+        badge_color: "border-cyan-500/30 bg-cyan-500/10 text-cyan-600",
+        min_grade_pct: "50% in Physics & Maths",
+        duration: "1.5 - 3 Years",
+        future_demand: "High (★★★★☆)",
+        avg_salary: "₹15.0 - 35 LPA",
+        top_places: ["IGRUA (UP)", "Madhya Pradesh", "Bengaluru", "USA/South Africa Tie-ups"],
+        description: "Booming Indian aviation market with 1,000+ new airline orders. Direct fast track to First Officer airline positions.",
+        top_roles: ["Commercial Airline Pilot", "First Officer", "Flight Operations Executive"],
+        admission_mode: "DGCA Medical + Flying Academy Entrance / Cadet Pilot Program"
+      },
+      {
+        id: "c7",
+        name: "B.Des in UI/UX & Digital Product Design",
+        name_ml: "ബി.ഡെസ് ഇൻ യു.ഐ / യു.എക്സ് ഡിസൈൻ",
+        stream: "Any",
+        icon: "🎨",
+        badge_color: "border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-600",
+        min_grade_pct: "50% in 12th Board",
+        duration: "4 Years",
+        future_demand: "Very High (★★★★★)",
+        avg_salary: "₹7.0 - 18 LPA",
+        top_places: ["Bengaluru", "Pune", "Ahmedabad", "Delhi NCR", "Mumbai"],
+        description: "Creative design for mobile apps, smart devices, games, and web software with high demand in tech companies.",
+        top_roles: ["Product Designer", "UI/UX Specialist", "Design Strategist"],
+        admission_mode: "UCEED / NID DAT / Portfolio + Interview"
+      }
+    ];
+
+    const collegesData = [
+      {
+        id: "col_rvce",
+        name: "RV College of Engineering (RVCE)",
+        hub: "Bengaluru",
+        location: "Bengaluru, Karnataka",
+        type: "VTU Autonomous",
+        nirf_rank: "Top 100 Engineering",
+        naac_grade: "A+",
+        has_management: true,
+        merit_fee: "₹1,10,000 (KCET) / ₹2.6L (COMEDK)",
+        mgmt_fee: "₹10L - 14L / Year (Direct RSST)",
+        placement_rate: "98%",
+        highest_pkg: "₹62 LPA",
+        avg_pkg: "₹15.4 LPA",
+        card_gradient: "from-blue-500/10 to-indigo-500/5",
+        route_detail: "Direct management quota seats through RSST Trust office. 65%+ in 10th/12th PCM required."
+      },
+      {
+        id: "col_vit",
+        name: "Vellore Institute of Technology (VIT)",
+        hub: "Tamil Nadu",
+        location: "Vellore & Chennai, Tamil Nadu",
+        type: "Institution of Eminence / Deemed",
+        nirf_rank: "NIRF #11 Engineering",
+        naac_grade: "A++",
+        has_management: true,
+        merit_fee: "₹1.98 Lakhs (Cat 1)",
+        mgmt_fee: "₹3.5L - 4.95L / Year (Cat 3-5)",
+        placement_rate: "95%",
+        highest_pkg: "₹1.02 Crore (Intl)",
+        avg_pkg: "₹9.23 LPA",
+        card_gradient: "from-purple-500/10 to-indigo-500/5",
+        route_detail: "VITEEE entrance exam score. Candidates with lower ranks can opt for Category 2 to 5 fee slabs. NRI seats available."
+      },
+      {
+        id: "col_manipal",
+        name: "Manipal Academy of Higher Education (MAHE)",
+        hub: "Manipal",
+        location: "Manipal & Mangalore, Karnataka",
+        type: "Institution of Eminence",
+        nirf_rank: "NIRF #6 University",
+        naac_grade: "A++",
+        has_management: true,
+        merit_fee: "₹4.85 Lakhs (B.Tech MIT)",
+        mgmt_fee: "MBBS: ₹17.8L/Yr | NRI Quota",
+        placement_rate: "96%",
+        highest_pkg: "₹54.7 LPA",
+        avg_pkg: "₹12.5 LPA",
+        card_gradient: "from-emerald-500/10 to-teal-500/5",
+        route_detail: "Manipal Entrance Test (MET) for engineering. NEET for KMC medical with direct Deemed University quota."
+      },
+      {
+        id: "col_christ",
+        name: "Christ (Deemed to be University)",
+        hub: "Bengaluru",
+        location: "Bengaluru, Karnataka (Central & Bannerghatta)",
+        type: "Deemed University",
+        nirf_rank: "Top 60 Multi-Disciplinary",
+        naac_grade: "A+",
+        has_management: true,
+        merit_fee: "₹1.8L - 2.5L / Year",
+        mgmt_fee: "₹2.5L - 3.5L / Year (Direct)",
+        placement_rate: "92%",
+        highest_pkg: "₹24 LPA",
+        avg_pkg: "₹7.2 LPA",
+        card_gradient: "from-rose-500/10 to-pink-500/5",
+        route_detail: "CUET Entrance & Micro Presentation/Interview. Direct management seats available through administration."
+      },
+      {
+        id: "col_symbiosis",
+        name: "Symbiosis International University",
+        hub: "Pune",
+        location: "Pune, Maharashtra",
+        type: "Deemed University",
+        nirf_rank: "NIRF Top 25 University",
+        naac_grade: "A++",
+        has_management: true,
+        merit_fee: "₹3.4 Lakhs / Year (SET)",
+        mgmt_fee: "₹4.5L - 5.2L / Year (Institutional)",
+        placement_rate: "94%",
+        highest_pkg: "₹21.5 LPA",
+        avg_pkg: "₹7.8 LPA",
+        card_gradient: "from-amber-500/10 to-orange-500/5",
+        route_detail: "SET for BBA / SLAT for Law. 15% institutional discretionary and NRI quota available."
+      },
+      {
+        id: "col_msrit",
+        name: "Ramaiah Institute of Technology (MSRIT)",
+        hub: "Bengaluru",
+        location: "Bengaluru, Karnataka",
+        type: "VTU Autonomous",
+        nirf_rank: "Top 70 Engineering",
+        naac_grade: "A+",
+        has_management: true,
+        merit_fee: "₹1,10,000 (KCET) / ₹2.6L (COMEDK)",
+        mgmt_fee: "₹6.5L - 9.5L / Year (Direct)",
+        placement_rate: "96%",
+        highest_pkg: "₹50 LPA",
+        avg_pkg: "₹9.8 LPA",
+        card_gradient: "from-sky-500/10 to-blue-500/5",
+        route_detail: "Direct management quota seats handled by Gokula Education Foundation for students with 60%+ in 12th PCM."
+      },
+      {
+        id: "col_cet",
+        name: "College of Engineering Trivandrum (CET)",
+        hub: "Kerala",
+        location: "Thiruvananthapuram, Kerala",
+        type: "Government Autonomous",
+        nirf_rank: "Top Tier Govt",
+        naac_grade: "A+",
+        has_management: false,
+        merit_fee: "₹8,500 - 12,000 / Year",
+        mgmt_fee: "100% Merit Based",
+        placement_rate: "94%",
+        highest_pkg: "₹33 LPA",
+        avg_pkg: "₹7.5 LPA",
+        card_gradient: "from-emerald-500/10 to-green-500/5",
+        route_detail: "Admissions strictly through KEAM Entrance Examination Rank and Centralized Allotment."
+      }
+    ];
+
+    const counselorsData = [
+      {
+        id: "coun_blr",
+        name: "Prof. S. Rajesh (Bengaluru Hub Expert)",
+        role: "Karnataka & South Engineering / Management Quota Advisor",
+        experience: "14+ Years in Pan-India Admissions",
+        specialty: "RVCE, Ramaiah, BMSCE Management Seats & Christ BBA",
+        languages: "English, Hindi, Kannada, Malayalam, Tamil",
+        rating: "4.95 ★",
+        status: "Online Now",
+        phone: "+919845011223",
+        avatar_bg: "bg-indigo-600"
+      },
+      {
+        id: "coun_med",
+        name: "Dr. Kavita Mehra (NEET & Deemed Univs)",
+        role: "Pan-India Medical, Dental & Allied Health Specialist",
+        experience: "11+ Years Experience",
+        specialty: "NEET All-India Quota, Manipal KMC, Amrita & B.Sc Nursing",
+        languages: "English, Hindi, Punjabi",
+        rating: "4.9 ★",
+        status: "Online Now",
+        phone: "+919811044556",
+        avatar_bg: "bg-rose-600"
+      },
+      {
+        id: "coun_univ",
+        name: "Arjun Sundaram (Private & Deemed Universities)",
+        role: "VIT, SRM, Symbiosis, Manipal & Law/Design Expert",
+        experience: "10+ Years Experience",
+        specialty: "VIT Category Slabs, Symbiosis SLAT/SET & SRMJEEE Direct",
+        languages: "English, Tamil, Hindi, Telugu",
+        rating: "4.88 ★",
+        status: "Available",
+        phone: "+919841077889",
+        avatar_bg: "bg-amber-600"
+      },
+      {
+        id: "coun_ker",
+        name: "Fathima Suhara (Finance & Kerala Programs)",
+        role: "ACCA/CA Programs, Kerala Admissions & Education Loans",
+        experience: "9+ Years Experience",
+        specialty: "B.Com/BBA with ACCA, KEAM Admissions & Bank Loan Guidance",
+        languages: "English, Malayalam, Hindi",
+        rating: "4.9 ★",
+        status: "Online Now",
+        phone: "+919400045678",
+        avatar_bg: "bg-emerald-600"
+      }
+    ];
+
+    let currentLanguage = 'en';
+    let isDesktopMode = false;
+    let selectedGradePct = 75;
+
+    // Theme Switcher
+    function setAppTheme(themeName) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('userAppTheme', themeName);
+    }
+
+    // Render Courses
+    function renderCourses(filter = 'all', searchQuery = '') {
+      const container = document.getElementById('courseCardsList');
+      container.innerHTML = '';
+
+      const filtered = coursesData.filter(c => {
+        const matchStream = (filter === 'all') || (c.stream === filter);
+        const matchSearch = searchQuery === '' || 
+          c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          c.stream.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.top_places.some(p => p.toLowerCase().includes(searchQuery.toLowerCase()));
+        return matchStream && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="text-center py-8 text-xs text-[var(--muted-foreground)]">No courses found matching your criteria.</div>`;
+        return;
+      }
+
+      filtered.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-2xl bg-[var(--content)] border border-[var(--border)] hover:border-indigo-500/60 transition-all cursor-pointer shadow-sm hover:shadow-md group relative overflow-hidden';
+        card.onclick = () => openCourseModal(course.id);
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-start gap-2.5">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow-sm border ${course.badge_color}">
+                ${course.icon}
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${course.badge_color}">
+                    ${course.stream}
+                  </span>
+                  <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                    ${course.future_demand}
+                  </span>
+                </div>
+                <h4 class="font-extrabold text-sm text-[var(--foreground)] mt-1.5 group-hover:text-indigo-600 transition-colors">
+                  ${currentLanguage === 'ml' ? course.name_ml : course.name}
+                </h4>
+              </div>
+            </div>
+            <span class="text-xs font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 whitespace-nowrap shadow-sm">
+              ${course.avg_salary}
+            </span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)] mt-2 line-clamp-2 leading-relaxed">
+            ${course.description}
+          </p>
+          <div class="flex items-center justify-between text-[11px] text-[var(--muted-foreground)] mt-3 pt-2.5 border-t border-[var(--border)]">
+            <span class="flex items-center gap-1 font-medium">📍 ${course.top_places.slice(0, 3).join(', ')}</span>
+            <span class="brand-text font-bold group-hover:translate-x-0.5 transition-transform">View Scope & Details →</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Render Colleges
+    function renderColleges(hubFilter = 'all', searchQuery = '') {
+      const container = document.getElementById('collegeCardsList');
+      container.innerHTML = '';
+
+      const filtered = collegesData.filter(c => {
+        const matchHub = (hubFilter === 'all') || (c.hub === hubFilter);
+        const matchSearch = searchQuery === '' ||
+          c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.hub.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.location.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchHub && matchSearch;
+      });
+
+      filtered.forEach(college => {
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-2xl bg-gradient-to-br ${college.card_gradient} bg-[var(--content)] border border-[var(--border)] space-y-2.5 shadow-sm hover:shadow-md transition-all`;
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 border border-indigo-500/20">${college.type}</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/20">★ ${college.nirf_rank}</span>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-600">NAAC ${college.naac_grade}</span>
+              </div>
+              <h4 class="font-extrabold text-sm text-[var(--foreground)] mt-1.5">
+                ${college.name}
+              </h4>
+              <div class="text-[11px] text-[var(--muted-foreground)]">📍 ${college.location}</div>
+            </div>
+            <div class="text-right">
+              <span class="text-xs font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">${college.highest_pkg}</span>
+              <div class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Highest CTC</div>
+            </div>
+          </div>
+
+          <!-- Quota & Fee Info Box -->
+          <div class="p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] text-xs space-y-1.5 shadow-sm">
+            <div class="flex justify-between items-center">
+              <span class="text-[var(--muted-foreground)] font-medium">Merit / Entrance Fee:</span>
+              <span class="font-bold text-emerald-600">${college.merit_fee}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-[var(--muted-foreground)] font-medium">Direct Management Quota:</span>
+              <span class="font-black ${college.has_management ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400'}">${college.mgmt_fee}</span>
+            </div>
+            <p class="text-[11px] text-[var(--muted-foreground)] pt-1.5 border-t border-[var(--border)] mt-1 leading-snug">
+              ℹ️ ${college.route_detail}
+            </p>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="openCallbackModal('${college.name}')" class="flex-1 py-2 rounded-xl brand-btn text-white font-bold text-xs transition-colors shadow-sm">
+              Inquire Management & Admission Quota 📞
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Grade Matcher Computation
+    function setGradeScore(scoreStr, btnElement) {
+      selectedGradePct = parseInt(scoreStr, 10);
+      document.querySelectorAll('.grade-btn').forEach(b => {
+        b.classList.remove('brand-btn', 'text-white', 'shadow');
+      });
+      btnElement.classList.add('brand-btn', 'text-white', 'shadow');
+      runGradeMatcher();
+    }
+
+    function runGradeMatcher() {
+      const stream = document.getElementById('matcherStreamSelect').value;
+      const container = document.getElementById('matcherResultsContainer');
+      container.innerHTML = '';
+
+      let resultsHtml = '';
+
+      if (selectedGradePct >= 90) {
+        resultsHtml = `
+          <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 space-y-2 shadow-sm">
+            <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>🌟</span> Tier 1 Merit & Full Scholarship Eligible
+            </div>
+            <h4 class="font-black text-sm text-[var(--foreground)]">Direct Merit & Top Entrance Cutoffs</h4>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              With 90%+ marks, you qualify for <b>Category 1 lowest fees at VIT</b>, merit scholarships at <b>Manipal (MAHE)</b>, direct interview rounds at <b>Christ University</b>, and high rank allotment in <b>KEAM / COMEDK</b>.
+            </p>
+            <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300">
+              ✓ Eligible for 50% - 100% Tuition Fee Waivers & Central Sector Scholarships.
+            </div>
+          </div>
+        `;
+      } else if (selectedGradePct >= 75) {
+        resultsHtml = `
+          <div class="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/40 space-y-2 shadow-sm">
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>🎓</span> Strong Eligibility for Top Private & Deemed Hubs
+            </div>
+            <h4 class="font-black text-sm text-[var(--foreground)]">High Chances in Top Bengaluru & Tamil Nadu Institutions</h4>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              You meet the grade cutoffs for <b>RV College of Engineering (RVCE)</b> management quota (min 65% PCM), <b>VIT Category 1 & 2</b>, <b>Ramaiah (MSRIT)</b>, and <b>Symbiosis Pune</b>.
+            </p>
+            <div class="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+              ✓ Safe entry into premium B.Tech, BBA, Corporate Law, and Allied Health programs.
+            </div>
+          </div>
+        `;
+      } else if (selectedGradePct >= 60) {
+        resultsHtml = `
+          <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/40 space-y-2 shadow-sm">
+            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>⚡</span> Management Quota & Deemed University Slabs
+            </div>
+            <h4 class="font-black text-sm text-[var(--foreground)]">Direct Seat Reservation Recommended</h4>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              With 60% - 74%, you meet the minimum eligibility criteria (60% mandatory) for top engineering, management, and private university seats like <b>SRM University</b>, <b>VIT Category 3-4</b>, and <b>Bengaluru Institutional Seats</b> without entrance dependencies.
+            </p>
+            <div class="text-xs font-bold text-amber-700 dark:text-amber-300">
+              ⚠️ Early seat reservation advised before seats fill up.
+            </div>
+          </div>
+        `;
+      } else {
+        resultsHtml = `
+          <div class="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/40 space-y-2 shadow-sm">
+            <div class="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>🛡️</span> Qualifying Grade Programs (50% - 59%)
+            </div>
+            <h4 class="font-black text-sm text-[var(--foreground)]">High Demand Alternative & Professional Paths</h4>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              You meet the qualifying grade for <b>NEET MBBS/BDS</b> (50% aggregate), <b>B.Sc Nursing</b>, <b>Commercial Pilot License (50% in Physics/Maths)</b>, <b>B.Des UI/UX</b>, and <b>Integrated Law (CLAT/Direct 45%+)</b>.
+            </p>
+            <div class="text-xs font-bold text-purple-700 dark:text-purple-300">
+              💡 Our counselors can map specific colleges with 50% pass criteria.
+            </div>
+          </div>
+        `;
+      }
+
+      resultsHtml += `
+        <div class="p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex items-center justify-between gap-3 shadow-md">
+          <div>
+            <div class="font-bold text-xs text-[var(--foreground)]">Get Instant Cutoff Sheet (Zero Wait)</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Receive a tailored list of 10 colleges matching ${selectedGradePct}% in ${stream}</div>
+          </div>
+          <button onclick="openCallbackModal('12th Grade Matcher (${selectedGradePct}% in ${stream})')" class="px-3.5 py-2 rounded-xl brand-btn text-white font-bold text-xs shadow whitespace-nowrap">
+            Send List 📲
+          </button>
+        </div>
+      `;
+
+      container.innerHTML = resultsHtml;
+    }
+
+    // Render Counselors with WhatsApp Direct Buttons
+    function renderCounselors() {
+      const container = document.getElementById('counselorCardsList');
+      container.innerHTML = '';
+
+      counselorsData.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-2xl bg-[var(--content)] border border-[var(--border)] flex items-center justify-between gap-3 shadow-sm hover:shadow-md transition-all';
+        card.innerHTML = `
+          <div class="flex items-start gap-3 flex-1">
+            <div class="w-10 h-10 rounded-2xl ${c.avatar_bg} flex items-center justify-center text-white font-black text-sm shadow-md">
+              ${c.name.charAt(0)}
+            </div>
+            <div class="space-y-1 flex-1">
+              <div class="flex items-center gap-2">
+                <h4 class="font-extrabold text-xs text-[var(--foreground)]">${c.name}</h4>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ${c.status}
+                </span>
+              </div>
+              <div class="text-[11px] font-bold brand-text">${c.role}</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">🎯 ${c.specialty}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">🗣️ ${c.languages} • ⭐ ${c.rating}</div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <button onclick="openCallbackModal('${c.name}')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-md transition-all whitespace-nowrap">
+              📞 Call
+            </button>
+            <a href="https://wa.me/919400012345?text=Hello%20${encodeURIComponent(c.name)},%20I%20need%20admission%20guidance%20after%2012th" target="_blank" class="px-3.5 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 font-bold text-[10px] text-center hover:bg-emerald-500/20 transition-all">
+              💬 WhatsApp
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Switch Tabs
+    function switchTab(tabName) {
+      const tabs = ['courses', 'matcher', 'colleges', 'fees', 'counselors'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const navEl = document.getElementById(`nav-${t}`);
+        if (t === tabName) {
+          el.classList.remove('hidden');
+          navEl.classList.add('brand-text', 'font-black');
+          navEl.classList.remove('text-[var(--muted-foreground)]');
+        } else {
+          el.classList.add('hidden');
+          navEl.classList.remove('brand-text', 'font-black');
+          navEl.classList.add('text-[var(--muted-foreground)]');
+        }
+      });
+      if (tabName === 'matcher') {
+        runGradeMatcher();
+      }
+    }
+
+    // Filter Courses by Stream
+    function filterCourses(stream) {
+      document.querySelectorAll('.stream-pill').forEach(btn => {
+        if (btn.dataset.stream === stream) {
+          btn.classList.add('brand-btn', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-[var(--content)]', 'text-[var(--muted-foreground)]');
+        } else {
+          btn.classList.remove('brand-btn', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-[var(--content)]', 'text-[var(--muted-foreground)]');
+        }
+      });
+      renderCourses(stream, document.getElementById('searchInput').value);
+    }
+
+    // Filter Colleges by Hub
+    function filterCollegesHub(hub) {
+      document.querySelectorAll('.hub-pill').forEach(btn => {
+        if (btn.dataset.hub === hub) {
+          btn.classList.add('brand-btn', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-[var(--content)]', 'text-[var(--muted-foreground)]');
+        } else {
+          btn.classList.remove('brand-btn', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-[var(--content)]', 'text-[var(--muted-foreground)]');
+        }
+      });
+      renderColleges(hub, document.getElementById('searchInput').value);
+    }
+
+    // Search
+    function handleSearch(val) {
+      renderCourses('all', val);
+      renderColleges('all', val);
+    }
+
+    // Course Detail Modal
+    function openCourseModal(courseId) {
+      const c = coursesData.find(item => item.id === courseId);
+      if (!c) return;
+
+      document.getElementById('modalCourseStream').innerText = `${c.stream} Stream`;
+      document.getElementById('modalCourseTitle').innerText = (currentLanguage === 'ml' && c.name_ml) ? c.name_ml : c.name;
+      document.getElementById('modalCourseDesc').innerText = c.description;
+      document.getElementById('modalCourseDuration').innerText = `${c.duration} (${c.min_grade_pct})`;
+      document.getElementById('modalCourseSalary').innerText = c.avg_salary;
+      document.getElementById('modalCourseAdmission').innerText = c.admission_mode;
+
+      const hubsDiv = document.getElementById('modalCourseHubs');
+      hubsDiv.innerHTML = '';
+      c.top_places.forEach(h => {
+        const badge = document.createElement('span');
+        badge.className = 'px-2.5 py-1 rounded-lg bg-[var(--content)] border border-[var(--border)] text-[11px] font-semibold text-[var(--foreground)]';
+        badge.innerText = `📍 ${h}`;
+        hubsDiv.appendChild(badge);
+      });
+
+      const rolesDiv = document.getElementById('modalCourseRoles');
+      rolesDiv.innerHTML = '';
+      c.top_roles.forEach(r => {
+        const badge = document.createElement('span');
+        badge.className = 'px-2.5 py-1 rounded-lg bg-[var(--content)] border border-[var(--border)] text-[11px] font-semibold text-[var(--foreground)]';
+        badge.innerText = r;
+        rolesDiv.appendChild(badge);
+      });
+
+      document.getElementById('courseModal').classList.remove('hidden');
+    }
+
+    function closeCourseModal() {
+      document.getElementById('courseModal').classList.add('hidden');
+    }
+
+    // Callback Modal & Ticket Generation (Zero Busy Server)
+    let inquiryTarget = 'General All-India Admission';
+    function openCallbackModal(contextName) {
+      inquiryTarget = contextName || 'General';
+      document.getElementById('leadForm').classList.remove('hidden');
+      document.getElementById('ticketSuccessCard').classList.add('hidden');
+      document.getElementById('callbackModal').classList.remove('hidden');
+    }
+
+    function closeCallbackModal() {
+      document.getElementById('callbackModal').classList.add('hidden');
+    }
+
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('leadName').value;
+      const phone = document.getElementById('leadPhone').value;
+      const score = document.getElementById('leadScore').value;
+      const hub = document.getElementById('leadHub').value;
+
+      // Generate random ticket number
+      const randomTicket = 'NS-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('ticketIdLabel').innerText = '#' + randomTicket;
+
+      // Update WhatsApp bypass link
+      const waMsg = `Hello NextStep Team, my name is ${name}. My 12th score is ${score} and I am targeting ${hub} for admission. My Priority Ticket is #${randomTicket}. Please advise!`;
+      document.getElementById('whatsappDirectLink').href = `https://wa.me/919400012345?text=${encodeURIComponent(waMsg)}`;
+
+      // Switch to confirmation view inside modal
+      document.getElementById('leadForm').classList.add('hidden');
+      document.getElementById('ticketSuccessCard').classList.remove('hidden');
+
+      showToast(`Priority Ticket #${randomTicket} generated!`);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
+    }
+
+    // Toggle Mobile Frame vs Desktop Full View
+    function toggleDeviceView() {
+      isDesktopMode = !isDesktopMode;
+      const container = document.getElementById('appContainer');
+      const icon = document.getElementById('deviceIcon');
+      const label = document.getElementById('deviceLabel');
+
+      if (isDesktopMode) {
+        container.classList.remove('max-w-md');
+        container.classList.add('max-w-5xl');
+        icon.innerText = '💻';
+        label.innerText = 'Full Desktop View';
+      } else {
+        container.classList.remove('max-w-5xl');
+        container.classList.add('max-w-md');
+        icon.innerText = '📱';
+        label.innerText = 'Mobile Mockup View';
+      }
+    }
+
+    // Toggle Language
+    function toggleLanguage() {
+      currentLanguage = (currentLanguage === 'en') ? 'ml' : 'en';
+      document.getElementById('currentLangLabel').innerText = (currentLanguage === 'en') ? 'English' : 'മലയാളം';
+      renderCourses();
+      renderColleges();
+    }
+
+    // PWA Service Worker Registration & Install Trigger
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('pwaInstallBtn');
+      if (installBtn) installBtn.classList.remove('hidden');
+    });
+
+    function triggerPwaInstall() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            showToast('App installed successfully to your home screen!');
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        showToast('To install: Tap browser menu (⋮) and select "Install App" or "Add to Home Screen"');
+      }
+    }
+
+    // Register Service Worker for Offline / Zero-Downtime Cache
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(() => {
+          // Local fallback
+        });
+      });
+    }
+
+    // Initial render
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('userAppTheme') || 'indigo';
+      setAppTheme(savedTheme);
+      renderCourses();
+      renderColleges();
+      renderCounselors();
+      runGradeMatcher();
+    };
+  </script>
+</body>
+</html>

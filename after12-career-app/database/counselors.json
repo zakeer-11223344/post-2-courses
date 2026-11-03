@@ -1,0 +1,54 @@
+[
+  {
+    "id": "coun_blr",
+    "name": "Prof. S. Rajesh (Bengaluru Hub Expert)",
+    "role": "Karnataka & South India Engineering & Management Quota Specialist",
+    "experience": "14+ Years in All-India Admissions",
+    "specialization": ["RVCE, Ramaiah, BMSCE Direct Management Seats", "COMEDK & KCET Counselling", "Christ & NMIMS BBA"],
+    "locations_covered": "Bengaluru, Mangalore, Mysuru",
+    "languages": "English, Hindi, Kannada, Malayalam, Tamil",
+    "rating": 4.95,
+    "students_placed": "6,500+",
+    "status": "Online Now",
+    "phone": "+91 98450 11223"
+  },
+  {
+    "id": "coun_med",
+    "name": "Dr. Kavita Mehra (NEET & Deemed Univs)",
+    "role": "Pan-India Medical, Dental & Allied Health Advisor",
+    "experience": "11+ Years Experience",
+    "specialization": ["NEET All-India Quota (MCC)", "Deemed Medical Quota (Manipal KMC, Amrita, DY Patil)", "B.Sc Nursing & B.Pharm Abroad/India"],
+    "locations_covered": "All India & Abroad (UK/Georgia)",
+    "languages": "English, Hindi, Punjabi",
+    "rating": 4.9,
+    "students_placed": "4,100+",
+    "status": "Online Now",
+    "phone": "+91 98110 44556"
+  },
+  {
+    "id": "coun_univ",
+    "name": "Arjun Sundaram (Private & Deemed Universities)",
+    "role": "VIT, SRM, Symbiosis, Manipal & Law/Design Specialist",
+    "experience": "10+ Years Experience",
+    "specialization": ["VIT Category Slabs Guidance", "Symbiosis (SLAT/SET)", "SRMJEEE Institutional Seats", "UCEED / Design Portfolios"],
+    "locations_covered": "Chennai, Pune, Delhi NCR, Vellore",
+    "languages": "English, Tamil, Hindi, Telugu",
+    "rating": 4.88,
+    "students_placed": "5,200+",
+    "status": "Available in 5 mins",
+    "phone": "+91 98410 77889"
+  },
+  {
+    "id": "coun_ker",
+    "name": "Fathima Suhara (Kerala & Finance Programs)",
+    "role": "Kerala Admissions, KEAM & Global ACCA / CA Specialist",
+    "experience": "9+ Years Experience",
+    "specialization": ["Kerala Govt & Self-Financing Colleges (CET, MEC)", "B.Com/BBA with ACCA", "Education Loans & Scholarships"],
+    "locations_covered": "Kerala & All India",
+    "languages": "English, Malayalam, Hindi",
+    "rating": 4.9,
+    "students_placed": "3,400+",
+    "status": "Online Now",
+    "phone": "+91 94000 45678"
+  }
+]
